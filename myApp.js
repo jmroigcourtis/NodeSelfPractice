@@ -6,6 +6,10 @@ let bodyParser = require('body-parser')
 require('dotenv').config()
 
 const absolutepath = __dirname + '/views/index.html'
+const saludoPath = __dirname + './views/saludo.html'
+
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 
 app.get('/now', (req, res, next) => {
     req.time = new Date().toString();
@@ -16,11 +20,6 @@ app.get('/now', (req, res, next) => {
     });
 });
 
-app.use((req, res, next) => {
-    bodyParser.urlencoded({
-        extended: false
-    })
-})
 
 
 app.listen(process.env.PORT)
@@ -39,6 +38,7 @@ app.get('/:param1/echo', (req, res) => {
 
 /* Para renderizar un html */
 app.get('/', (req, res) => {
+    console.log('Hola!')
     res.sendFile(absolutepath)
 })
 
@@ -58,9 +58,19 @@ app.get('/name/', (req, res) => {
 
 app.post('/name', (req, res) => {
     const {first, last } = req.body
-    res.json({
-        name: `${firstName} ${lastName}`
-    })
+    const fullname = `${first} ${last}`
+    if (first === '' || last === '') {
+        return res.json({
+            status: 'Error',
+            errorMessage: 'You must enter a valid input',
+        })
+    }
+    req.body && res.json({
+        name: fullname,
+        message: `Welcome ${first} ${last}`,
+        statusCode: res.statusCode
+    })  
+
 })
 
 

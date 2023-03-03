@@ -5,10 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/style.css">
+    <script src="/myApp.js"></script>
     <title>01.NodeExpress</title>
 </head>
 <body>
-    <h1 class="title">Hello!</h1>
+    <h1 class="title">01. Method and form practice </h1>
     <p>Esto es 01.NodeExpress</p>
+    <form action="/name" method="post">
+        <label>First Name :</label>
+        <input type="text" name="first" value="" placeholder="First name"><br>
+        <label>Last Name :</label>
+        <input type="text" name="last" value="" placeholder="Last name"><br><br>
+        <input type="submit" value="Submit">
+    </form> 
 </body>
 </html>
