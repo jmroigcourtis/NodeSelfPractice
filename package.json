@@ -3,9 +3,18 @@
     "name": "Juan"
   },
   "description": "Node repo para paracticar",
-  "keywords": ["node", "express", "server"],
+  "keywords": [
+    "node",
+    "express",
+    "server"
+  ],
   "dependencies": {
+    "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nodemon": "^2.0.21"
+  },
+  "scripts": {
+    "start:dev": " nodemon myApp.js -Dev" 
   }
 }
